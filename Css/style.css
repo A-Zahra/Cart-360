@@ -1,0 +1,169 @@
+.Background-img {
+  width: auto;
+  height: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  position: fixed;
+  /* Add the blur effect */
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+}
+
+.mainContainer {
+  position: relative;
+  margin-left: -8px;
+  margin-right: -8px;
+  margin-top: -8px;
+}
+
+/* Navigation bar */
+.NavigationBar {
+  display: flex;
+  margin-top: 2vw;
+  /* box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2); */
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: black;
+  text-align: center;
+  padding: 25px 20px;
+  text-decoration: none;
+  font-family: "century gothic", sans-serif;
+  transition: 0.7s;
+  font-size: 1.3vw;
+  margin-top: 0.5vw;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  color: rgb(173 178 196);
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgb(149, 203, 219, 1);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Introduction */
+.Container {
+  background-color: rgb(103, 108, 126, 0.3);
+  display: table;
+  margin: auto;
+  width: 100%;
+}
+
+.row1 {
+  display: flex;
+  margin-top: 10vw;
+  margin-left: 7vw;
+  margin-right: 7vw;
+  margin-bottom: 7vw;
+  padding: 1vw;
+
+}
+.row2 {
+  margin-top: 10vw;
+  margin-left: 7vw;
+  margin-right: 7vw;
+  margin-bottom: 7vw;
+  padding: 1vw;
+
+}
+
+.innerRow2 {
+  display: flex;
+}
+
+#rowTitle {
+  color: black;
+  text-align: center;
+  padding: 25px 20px;
+  text-decoration: none;
+  font-family: "century gothic", sans-serif;
+  transition: 0.7s;
+  font-size: 1.7vw;
+  margin-top: -7vw;
+  position: absolute;
+  
+  
+}
+
+.column {
+  width: 26.5%;
+  display: inline-table;
+  left: 0;
+  right: 0;
+  margin: 1vw;
+  padding: 2vw;
+  box-shadow: 0 2px 19px 6px rgba(0, 0, 0, 0.2);
+
+}
+
+.sectionTitle {
+  text-align: center;
+  padding: 2vw;
+  color: black;
+  text-decoration: none;
+  font-family: "Abel", sans-serif;
+  transition: 0.7s;
+  font-size: 1.5vw;
+  margin-top: 0.5vw;
+  margin-bottom: 0.5vw;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@700&family=Karla:wght@700&family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@700&family=Karla:wght@400;700&family=Lobster&family=Open+Sans+Condensed:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Catamaran:wght@700&family=Karla:wght@400;700&family=Lobster&family=Open+Sans+Condensed:wght@300&display=swap');
+
+#title {
+  font-family: 'Century gothic', sans-serif;
+  line-height: 1.5;
+  font-size: 3vw;
+  font-weight: 500;
+  color: black;
+  text-align: center;
+  margin: 5vw;
+}
+
+
