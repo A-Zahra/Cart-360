@@ -21,13 +21,14 @@
 /* Navigation bar */
 .NavigationBar {
   display: flex;
-  margin-top: 2vw;
+  margin: 0vw;
   /* box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2); */
 }
 
 ul {
   list-style-type: none;
-  margin: 0;
+  /* margin-left: 2vw; */
+  margin-top: 0vw;
   padding: 0;
   overflow: hidden;
   display: flex;
@@ -37,9 +38,11 @@ ul {
 
 li {
   float: left;
+
 }
 
 li a, .dropbtn {
+  
   display: inline-block;
   color: black;
   text-align: center;
@@ -48,15 +51,17 @@ li a, .dropbtn {
   font-family: "century gothic", sans-serif;
   transition: 0.7s;
   font-size: 1.3vw;
-  margin-top: 0.5vw;
 }
 
 li a:hover, .dropdown:hover .dropbtn {
-  color: rgb(173 178 196);
+  color: white;
 }
 
 li.dropdown {
   display: inline-block;
+    background-color: rgb(149, 203, 219, 1);
+    margin: 1vw;
+    border-radius: 0.3vw;
 }
 
 .dropdown-content {
@@ -162,8 +167,19 @@ li.dropdown {
   font-size: 3vw;
   font-weight: 500;
   color: black;
-  text-align: center;
+  text-align: left;
   margin: 5vw;
 }
 
-
+.copyrights {
+  font-family: 'century gothic', sans-serif;
+  text-align: center;
+  font-size: 1.3vw;
+  font-weight: normal;
+  color: black;
+  padding-top: 1.5vw;
+  padding-bottom: 1.5vw;
+  width: 100%;
+  background-color: rgb(149, 203, 219, 1);
+  position: absolute;
+}
