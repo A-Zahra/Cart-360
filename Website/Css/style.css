@@ -52,7 +52,7 @@ li {
 }
 
 li a, .dropbtn {
-  
+
   display: inline-block;
   color: black;
   text-align: center;
@@ -61,6 +61,7 @@ li a, .dropbtn {
   font-family: "century gothic", sans-serif;
   transition: 0.7s;
   font-size: 1.3vw;
+  z-index: 2;
 }
 
 li a:hover, .dropdown:hover .dropbtn {
@@ -72,6 +73,7 @@ li.dropdown {
     background-color: rgb(250, 183, 61, 1);
     margin: 1vw;
     border-radius: 0.3vw;
+    z-index: 2;
 }
 
 .dropdown-content {
@@ -80,7 +82,7 @@ li.dropdown {
   background-color: rgb(250, 183, 61, 1);
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  z-index: 2;
 }
 
 .dropdown-content a {
@@ -101,13 +103,13 @@ li.dropdown {
 }
 
 /* Introduction */
-.Container {
-  background-color: rgb(103, 108, 126, 0.3);
+#Container {
+  /* background-color: rgb(103, 108, 126, 0.3); */
   display: table;
   margin: auto;
   width: 100%;
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
 .row1 {
@@ -145,8 +147,8 @@ li.dropdown {
   font-size: 1.7vw;
   margin-top: -7vw;
   position: absolute;
-  
-  
+
+
 }
 
 .column {
@@ -191,7 +193,7 @@ li.dropdown {
 
 
 .etudeImg {
-  
+
 }
 .copyrights {
   font-family: 'century gothic', sans-serif;
