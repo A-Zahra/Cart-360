@@ -21,7 +21,6 @@
  * GOOD LUCK!
  */
 /**** CONSTANTS ********************************************************/
-
 #define BUTTON_MODE_PIN 2 // Button to change the mode
 
 // constants for RGB LED
@@ -59,7 +58,7 @@ int k = 1;
 /**********************SETUP() DO NOT CHANGE*******************************/
 // Declare pin mode for the single digital input
 void setup()
-{
+{  
   pinMode(BUTTON_MODE_PIN, INPUT); // Receive input from the button
   // Display the output through the RGB LED and Piezo Buzzer
   pinMode(LED_PIN_R, OUTPUT); 
@@ -68,9 +67,7 @@ void setup()
   pinMode(BUZZER_PIN, OUTPUT);
   Serial.begin (115200);
   while(!Serial);  
-
 }
-
 /**********************LOOP() DO NOT CHANGE *******************************
  * INSTRUCTIONS: 
  * There is NO NEED to change the loop - it establishes the flow of the program
@@ -79,10 +76,9 @@ void setup()
  * based on if the button (linked to the BUTTON_MODE_PIN) was pressed
  * 2: setRGB(): will set the color of the RGB LED based on the value of the mode variable
  * 3: selectMode(): will determine which function to call based on the value of the mode variable
-
 **************************************************************************/
 void loop()
-{
+{  
   chooseMode();
   setRGB(mode);
   selectMode();
@@ -101,26 +97,25 @@ void loop()
  * once it reaches 4, it should go back to mode == 0. 
  * (i.e. if mode ==2 and we press, then mode ==3) ...
 **************************************************************************/
-void chooseMode(){
-
+void chooseMode()
+{  
   // Check if the button is pressed..
   if (digitalRead(BUTTON_MODE_PIN) == HIGH) {
-      // If the mode's value is < 4:
-      if (mode < 4) {
-          // Add one to it
-          mode ++; 
-      }
-      // If the mode's value is => 4: 
-      else  { 
-         // Reset it to its initial value
-         mode = 0;
-      }
-      // This delay allows the system to run the code only once
-      // every time the button is pressed.
-      delay (duration*5); 
+     // If the mode's value is < 4:
+     if (mode < 4) {
+        // Add one to it
+        mode ++; 
+     }
+     // If the mode's value is >= 4: 
+     else  { 
+        // Reset it to its initial value
+        mode = 0;
+     }
+     // This delay allows the system to run the code only once
+     // every time the button is pressed.
+     delay (duration*5); 
   }
 }
-
 /******************SETRGB(): IMPLEMENT *********************************
  * INSTRUCTIONS:
  * Depending on the value of the mode variable:
@@ -132,35 +127,35 @@ void chooseMode(){
  * YOU MUST USE A SWITCH CASE CONSTRUCT (NOT A SERIES OF IF / ELSE STATEMENTS
 **************************************************************************/
 void setRGB(int modeColor)
-{
+{ 
   // Specify the color of each mode based on the mode variable value
   switch (modeColor) {
-    case 0:
+     case 0:
         digitalWrite(LED_PIN_R, 0);
         digitalWrite(LED_PIN_G, 0);
         digitalWrite(LED_PIN_B, 0);
         break;
-    case 1:
+     case 1:
         digitalWrite(LED_PIN_R, 255);
         digitalWrite(LED_PIN_G, 0);
         digitalWrite(LED_PIN_B, 0);
         break;
-    case 2:
+     case 2:
         digitalWrite(LED_PIN_R, 0);
         digitalWrite(LED_PIN_G, 0);
         digitalWrite(LED_PIN_B, 255);
         break;
-    case 3:
+     case 3:
         digitalWrite(LED_PIN_R, 0);
         digitalWrite(LED_PIN_G, 255);
         digitalWrite(LED_PIN_B, 0);
         break;
-    case 4:
+     case 4:
         digitalWrite(LED_PIN_R, 102);
         digitalWrite(LED_PIN_G, 51);
         digitalWrite(LED_PIN_B, 153);
         break;
-   }
+  }
 }
 /**********************SELECTMODE() DO NOT CHANGE *******************************
  * INSTRUCTIONS: 
@@ -178,7 +173,6 @@ void setRGB(int modeColor)
  * 5: loopMode(): this function will playback any notes stored in the array that were recorded, 
  * BUT unlike the previous mode, you can choose in which sequence the notes are played.
  * REQUIRED: only play notes from the array (no live stuff)
-
 ******************************************************************************/
 void selectMode()
 {
@@ -242,7 +236,8 @@ void record()
 {   
   // While the number of notes being played is < total number of notes:
   while (countNotes < MAX_NOTES) {
-      // Give the system enough time to store the code in the correct array element
+      // First, give the system enough time to store the code in the correct array element
+      // Then, receive the next note and play it
       delay(2000);
       // Play the note through the buzzer
       tone(BUZZER_PIN, analogRead(NOTE_IN_PIN), duration);
@@ -265,18 +260,18 @@ void record()
 **************************************************************************/
 void play()
 { 
-     // Play the notes stored in the notes array
-     for (int y = 0; y < MAX_NOTES; y++){
-      tone( BUZZER_PIN, notes[y], duration);
-      delay(duration);
-    }
-    delay(duration*2);
-    // If the button is pressed, stop the loop
-     if (digitalRead(BUTTON_MODE_PIN) == HIGH) {
-        noTone(BUZZER_PIN);
-        // Reset the countNotes value to zero
-        countNotes = 0;
-    }
+  // Play the notes stored in the notes array
+  for (int j = 0; j < MAX_NOTES; j++){
+     tone( BUZZER_PIN, notes[j], duration);
+     delay(duration);
+  }
+  delay(duration*2);
+  // If the button is pressed, stop the loop
+  if (digitalRead(BUTTON_MODE_PIN) == HIGH) {
+     noTone(BUZZER_PIN);
+     // Reset the countNotes value to zero
+     countNotes = 0;
+  }
 }
 /******************LOOPMODE(): IMPLEMENT *********************************
  * INSTRUCTIONS:
@@ -290,48 +285,52 @@ void play()
 **************************************************************************/
 void looper()
 {   
-    // The code which randomizes the order of notes array elements
-    // Make sure if new random number already exists in our randomNumberChecker array or not
-    boolean alreadyExist = false;
-    
-    while (k < MAX_NOTES) {
-        // The variable which stores the new generated random number in each round
-        int random1 = random(1, 16);
+  // Make sure if new random number already exists in our randomNumberChecker array or not
+  boolean alreadyExist = false;
+  
+  // The code which randomizes the order of notes array elements
+  while (k < MAX_NOTES) {
+     // The variable which stores the new generated random number in each round
+     int random1 = random(1, 16);
 
-        // The condition which checks if this new random number matches any of the previous ones:
-        for (int i= 1; i < MAX_NOTES; i++){
-            if (random1 == randomNumberChecker[i]) {
-              // If the random number already exists, make the boolean value true
-              alreadyExist = true;
-              // Break the loop
-              break;
-            }
-        }
-        // If the random number doesn't exists already:
-        if (!alreadyExist) {
-           // Assign this new random number to the main array which is collecting the correct set of random numbers
-           mainSetOfRandNum[k] = random1;
-           // Also, add this new random number to the randomNumberChecker array which is used to check repetitiveness
-           randomNumberChecker[k] = random1;
-           // Go for the next element of the main array () 
-           k++;
-        }
-        // Reset the value of the boolean variable to it's initial value
-        alreadyExist = false;
-    }
+     // The condition which checks if this new random number matches any of the previous ones:
+     for (int l= 1; l < MAX_NOTES; l++){
+         if (random1 == randomNumberChecker[l]) {
+            // If the random number already exists, make the boolean value true
+            alreadyExist = true;
+            // Break the loop
+            break;
+         }
+     }
+     // If the random number doesn't exists already:
+     if (!alreadyExist) {
+        // Assign this new random number to the main array which is collecting the correct set of random numbers
+        mainSetOfRandNum[k] = random1;
+        // Also, add this new random number to the randomNumberChecker array which is used to check repetitiveness
+        randomNumberChecker[k] = random1;
+        // Go for the next element of the main array () 
+        k++;
+     }
+     // Reset the value of the boolean variable to it's initial value
+     alreadyExist = false;
+  }
 
-    // Play the recorded notes based on the new order of the array elements
-    for (int b = 0; b < MAX_NOTES; b++) {
-       // make sure the code will skip the empty (0) elements of the notes array
-       if ( notes[mainSetOfRandNum[b]] != 0) {
-          tone( BUZZER_PIN, notes[mainSetOfRandNum[b]], duration);
-          delay(duration);
-       }
-
-    }
-    delay(duration);
-        
+  // Play the recorded notes based on the new order of the array elements
+  for (int m = 0; m < MAX_NOTES; m++) {
+      // make sure the code will skip the empty (0) elements of the notes array
+      if ( notes[mainSetOfRandNum[m]] != 0) {
+         tone( BUZZER_PIN, notes[mainSetOfRandNum[m]], duration);
+         delay(duration);
+      }
+  }
+  delay(duration);    
 } 
-    
-
-/**************************************************************************/
+/**************PART TWO: SHORT ANSWER*********************************************
+* Through my observation and experimentation on the LoopyLooper circuit, I realized that 
+* the resistor ladder(keyboard), is a series circuit. The resistence is constant for all
+* buttons and is the same, since they all possesses same type of resistor. Also, 
+* the current is constant, as the buttons are connected to each other through the resistors and
+* and share the same flow of current.
+* 
+* The rate of voltage is
+*********************************************************************************/
