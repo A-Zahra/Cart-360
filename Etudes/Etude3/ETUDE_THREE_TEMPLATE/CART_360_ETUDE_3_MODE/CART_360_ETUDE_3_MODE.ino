@@ -185,12 +185,10 @@ void selectMode()
   else if(mode == 2) {
     record();
   }
-  
   else if(mode == 3) {
     play();
   }
-   
-   else if(mode == 4) {
+  else if(mode == 4) {
     looper();
   }
 }
@@ -325,12 +323,45 @@ void looper()
   }
   delay(duration);    
 } 
-/**************PART TWO: SHORT ANSWER*********************************************
+/**************PART TWO: SHORT ANSWER******************************************************
+THE RESISTOR LADDER
 * Through my observation and experimentation on the LoopyLooper circuit, I realized that 
-* the resistor ladder(keyboard), is a series circuit. The resistence is constant for all
-* buttons and is the same, since they all possesses same type of resistor. Also, 
-* the current is constant, as the buttons are connected to each other through the resistors and
-* and share the same flow of current.
+* on this circuit resistors are in a series arrangement. The resistance value is not 
+* the same for all of the resistors, since the resistors are in series. Each button
+* experience the sum of all the previous buttons' resistance. That is, the closer the button 
+* is to the end of the resistors series, the more resistance it will have against the voltage.
+* Therefore, the voltage rate which is sent to the arduino through the analog input pin would
+* vary depending on the position the button is placed.
+
+THE MODE SELECTOR
+* The mode selector only specifies which mode function should run once the button is pressed. 
+* Also, the RGB LED displays which mode is currently running.
+
+VOLTAGE ANALYSIS
+* On this circuit, the resistor ladder is using a voltage divider so that every button could 
+* send its own unique division of the voltage to the Arduino through the analog input pin (A0). 
+* In other words, instead of using the total voltage (5V) as the reference voltage every time 
+* a button is pressed, a division of the reference voltage is sent to the Arduino. In fact, 
+* placing the resistors in a series arrangement causes an increment of resistance against 
+* the voltage for the next buttons. For example, if the first button (the first left button) 
+* has resistance against the voltage as much as the first division of the total resistance, 
+* the last button (the first right button) has resistance against the voltage as much as 
+* the sum of the total resistance.
+
+HOW DOES THE INPUT BECOME AUDIBLE SOUND
+* Basically, piezo creates tone through vibration. The voltage ranging from 0 to 5 which has 
+* been received through the Arduino analog pin is encoded to a numerical range from 0 to 1023 
+* in a process which is called an analog-to-digital conversion. This voltage would create a 
+* mechanical motion, and "this motion is typically converted into audible sound using diaphragms 
+* and resonators"(WIKIPEDIA.ORG) embedded in the piezo. 
 * 
-* The rate of voltage is
-*********************************************************************************/
+************REFERENCES***********************************************************************
+ARDUINO.CC
+* https://www.arduino.cc/en/Tutorial/BuiltInExamples/Knock
+*
+WIKIPEDIA.ORG
+* https://en.wikipedia.org/wiki/Piezoelectric_speaker
+* 
+LEARN>ADAFRUIT.COM
+* https://learn.adafruit.com/using-piezo-buzzers-with-circuitpython-arduino?view=all
+*****************************************************************************************/
