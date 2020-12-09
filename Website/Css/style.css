@@ -151,9 +151,9 @@ li.dropdown {
 
 }
 
-.column {
+.column, .column1, .column2 {
   background-color: white;
-  width: 26.5%;
+  width: 18%;
   display: inline-table;
   left: 0;
   right: 0;
@@ -163,14 +163,20 @@ li.dropdown {
 
 }
 
+.column1{
+  width: 25.5%;
+}
+.column2 {
+  width: 26%;
+}
 .sectionTitle {
   text-align: left;
-  padding: 2vw;
+  padding: 1vw;
   color: black;
   text-decoration: none;
   font-family: "Abel", sans-serif;
   transition: 0.7s;
-  font-size: 1.5vw;
+  font-size: 1.3vw;
   margin-top: 0.5vw;
   margin-bottom: 0.5vw;
 }
@@ -198,7 +204,7 @@ li.dropdown {
 .prototypeListItem {
   font-family: 'century gothic', sans-serif;
   text-align: left;
-  font-size: 1.2vw;
+  font-size: 1vw;
   font-weight: normal;
   line-height: 0.5vw;
   color: black;
